@@ -24,10 +24,9 @@ const Weather = () => {
       const data = await response.json();
       console.log(data);
 
-      // Check if the city was found
       if (data.cod !== 200) {
         setErrorMessage("City not found. Please try again.");
-        setWeatherData(false); // Clear weather data on error
+        setWeatherData(false);
         return;
       }
 
@@ -40,7 +39,7 @@ const Weather = () => {
         windSpeed: data.wind.speed,
         icon: iconUrl,
       });
-      setErrorMessage(""); // Clear any previous error message
+      setErrorMessage("");
     } catch (error) {
       setWeatherData(false);
       console.error("City Not Found", error);
@@ -62,6 +61,7 @@ const Weather = () => {
               if (e.key === "Enter") {
                 const searchValue = inputRef.current.value;
                 inputRef.current.value = "";
+
                 inputRef.current.focus();
                 search(searchValue);
               }
